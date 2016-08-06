@@ -7,12 +7,6 @@
 @synthesize window, navigationController, repository;
 
 
-- (void)dealloc {
-	self.navigationController = nil;
-	self.window = nil;
-	self.repository = nil;
-	[super dealloc];
-}
 
 - (void)save {
 	NSAssert(self.context != nil, @"Not initialized");
@@ -35,7 +29,7 @@
 	[self addHardCodedBuddies];
 
 	self.navigationController = [[UINavigationController alloc] initWithRootViewController:buddies];
-	self.window = [[[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+	self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     window.rootViewController = self.navigationController;
     [window makeKeyAndVisible];
 
@@ -83,7 +77,7 @@
 	NSEntityDescription *desc = [[self.model entitiesByName] objectForKey:@"Buddy"];
 	NSFetchedPropertyDescription *prop = [[desc propertiesByName] objectForKey:@"messages"];
 	NSFetchRequest *fetchRequest = [prop fetchRequest];
-	NSSortDescriptor *sort = [[[NSSortDescriptor alloc] initWithKey:@"timeSinceReferenceDate" ascending:YES] autorelease];
+	NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"timeSinceReferenceDate" ascending:YES];
 	[fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
 }
 
@@ -120,7 +114,7 @@
     if (self->context != nil)
         return self->context;
     
-    self->context = [[NSManagedObjectContext xnew] retain];
+    self->context = [NSManagedObjectContext xnew];
     [self->context setPersistentStoreCoordinator:self.coordinator];
     return self.context;
 }
@@ -136,7 +130,7 @@
         return self->model;
     }
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Model" ofType:@"mom"];
-    self->model = [[[NSManagedObjectModel alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path]] autorelease];    
+    self->model = [[NSManagedObjectModel alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path]];    
     return self->model;
 }
 
@@ -154,7 +148,7 @@
     NSURL *storeURL = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Store.sqlite"]];
     
     NSError *error = nil;
-    self->coordinator = [[[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.model] autorelease];
+    self->coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.model];
     [self->coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];
     return self->coordinator;
 }

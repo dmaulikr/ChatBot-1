@@ -5,20 +5,17 @@
 @synthesize textView, text, delegate;
 
 - (void)dealloc {
-	self.textView = nil;
-	self.text = nil;
 	self.delegate = nil;
-    [super dealloc];
 }
 
 - (void)loadView {
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStyleDone target:self action:@selector(send:)] autorelease];
-	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)] autorelease];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStyleDone target:self action:@selector(send:)];
+	self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
 	
-	self.textView = [[[UITextView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+	self.textView = [[UITextView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	textView.text=text;
 
-	self.view = [[[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame] autorelease];
+	self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
 	[self.view addSubview:textView];
 
 	[textView becomeFirstResponder];

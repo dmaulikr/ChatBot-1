@@ -12,9 +12,9 @@
 	NSString *ident = NSStringFromClass([self class]);
 	TextViewCell *cell = (id)[tableView dequeueReusableCellWithIdentifier:ident];
 	if(cell == nil) {
-		cell = [[[TextViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ident] autorelease];
+		cell = [[TextViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ident];
 
-		cell.textView = [[[UILabel alloc] initWithFrame:cell.bounds] autorelease];
+		cell.textView = [[UILabel alloc] initWithFrame:cell.bounds];
 		cell.textView.backgroundColor = [UIColor clearColor];
         cell.textView.numberOfLines = 0;
         cell.textView.lineBreakMode = NSLineBreakByWordWrapping;
@@ -25,9 +25,5 @@
 	return cell;
 }
 	
-- (void)dealloc {
-	self.textView = nil;
-	[super dealloc];
-}
 
 @end

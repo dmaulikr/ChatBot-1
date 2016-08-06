@@ -7,7 +7,6 @@
 - (void)dealloc {
 	self.name = nil;
 	self.messages = nil;
-	[super dealloc];
 }
 
 - (Message*)lastMessage {

@@ -6,9 +6,9 @@
 @interface Buddy : NSManagedObject {
 
 }
-@property(nonatomic,retain) NSString *name;
-@property(nonatomic,retain) NSArray *messages;
-@property(nonatomic,readonly) Message *lastMessage;
+@property(nonatomic,strong) NSString *name;
+@property(nonatomic,strong) NSArray *messages;
+@property(weak, nonatomic,readonly) Message *lastMessage;
 @end
 
 

@@ -6,7 +6,7 @@
 
 // just a shorthand
 +(id)xnew {
-	return [[[self alloc] init] autorelease];
+	return [[self alloc] init];
 }
 
 +(NSArray*)declaredProperties {

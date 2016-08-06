@@ -4,7 +4,7 @@
 	UILabel *textView;
 }
 
-@property(nonatomic,retain) UILabel *textView;
+@property(nonatomic,strong) UILabel *textView;
 
 + (TextViewCell*)cellForTableView:(UITableView*)tableView;
 

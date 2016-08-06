@@ -1,5 +1,5 @@
 #import "Message.h"
-
+#import "Buddy.h"
 
 @implementation Message
 @dynamic text, source;

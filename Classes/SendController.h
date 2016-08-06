@@ -10,10 +10,10 @@
 @interface SendController : UIViewController {
 	UITextView *textView;
 	NSString *text;
-	id<SendControllerDelegate> delegate;
+	id<SendControllerDelegate> __weak delegate;
 }
 
-@property (nonatomic,retain) UITextView *textView;
+@property (nonatomic,strong) UITextView *textView;
 @property (nonatomic,copy) NSString *text;
-@property (nonatomic,assign) id<SendControllerDelegate> delegate;
+@property (nonatomic,weak) id<SendControllerDelegate> delegate;
 @end

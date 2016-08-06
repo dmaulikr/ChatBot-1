@@ -6,9 +6,9 @@
 	Buddy *buddy;
 	Repository *repository;
 }
-@property(nonatomic,retain) Buddy *buddy;
-@property(nonatomic,retain) Repository *repository;
-@property(nonatomic,retain) NSArray *responses;
+@property(nonatomic,strong) Buddy *buddy;
+@property(nonatomic,strong) Repository *repository;
+@property(nonatomic,strong) NSArray *responses;
 @property(nonatomic,assign) BOOL useTheBot;
 
 @end

@@ -5,17 +5,12 @@
 
 
 @interface BuddiesController ()
-@property(nonatomic,retain) NSArray *buddies;
+@property(nonatomic,strong) NSArray *buddies;
 @end
 
 @implementation BuddiesController
 @synthesize buddies, repository;
 
-- (void)dealloc {
-	self.buddies = nil;
-	self.repository = nil;
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -24,7 +19,7 @@
 	[super loadView];
 	NSAssert(self.repository != nil,@"Not initialized");
 	self.title = @"Buddies";
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil] autorelease];
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,7 +44,7 @@
     static NSString *CellIdentifier = @"BuddyCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
 	Buddy *buddy = [self.buddies objectAtIndex:indexPath.row];

@@ -6,9 +6,9 @@
 @interface Message : NSManagedObject {
 
 }
-@property(nonatomic,retain) NSString *text;
-@property(nonatomic,retain) Buddy *source;
-@property(nonatomic,readonly) NSDate *time;
+@property(nonatomic,strong) NSString *text;
+@property(nonatomic,strong) Buddy *source;
+@property(weak, nonatomic,readonly) NSDate *time;
 @property(nonatomic,assign) BOOL fromMe;
-@property(nonatomic,readonly) NSString *header;
+@property(weak, nonatomic,readonly) NSString *header;
 @end
