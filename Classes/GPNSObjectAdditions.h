@@ -6,6 +6,6 @@
 // replacement for new that does autorelease
 +(id)xnew;
 +(NSArray*)declaredProperties;
--(NSArray*)declaredProperties;
+@property (nonatomic, readonly, copy) NSArray *declaredProperties;
 
 @end

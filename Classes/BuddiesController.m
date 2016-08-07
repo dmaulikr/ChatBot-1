@@ -2,18 +2,15 @@
 #import "ChatController.h"
 #import "GPNSObjectAdditions.h"
 #import "Buddy.h"
-
+#import "Repository.h"
 
 @interface BuddiesController ()
-@property(nonatomic,strong) NSArray *buddies;
+@property (nonatomic, strong) NSArray *buddies;
 @end
 
 @implementation BuddiesController
-@synthesize buddies, repository;
 
-
-#pragma mark -
-#pragma mark View lifecycle
+#pragma mark - View lifecycle
 
 - (void)loadView {
 	[super loadView];
@@ -28,16 +25,14 @@
 	[self.tableView reloadData];
 }
 
-
-#pragma mark -
-#pragma mark UITableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.buddies count];
+    return (self.buddies).count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -47,18 +42,17 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-	Buddy *buddy = [self.buddies objectAtIndex:indexPath.row];
+	Buddy *buddy = (self.buddies)[indexPath.row];
 	cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",buddy.name]];
 	cell.textLabel.text = buddy.name;
 	cell.detailTextLabel.text = buddy.lastMessage.text;
     return cell;
 }
 
-#pragma mark -
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	Buddy *buddy = [self.buddies objectAtIndex:indexPath.row];
+	Buddy *buddy = (self.buddies)[indexPath.row];
 	ChatController *ctrl = [ChatController xnew];
     ctrl.repository = self.repository;
 	ctrl.buddy = buddy;

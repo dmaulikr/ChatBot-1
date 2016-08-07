@@ -1,11 +1,9 @@
 #import <UIKit/UIKit.h>
 
-@interface TextViewCell : UITableViewCell {
-	UILabel *textView;
-}
+@interface TextViewCell : UITableViewCell
 
-@property(nonatomic,strong) UILabel *textView;
+@property (nonatomic, strong) UILabel *textView;
 
-+ (TextViewCell*)cellForTableView:(UITableView*)tableView;
++ (TextViewCell *)cellForTableView:(UITableView *)tableView;
 
 @end

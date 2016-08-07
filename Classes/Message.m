@@ -4,10 +4,10 @@
 @implementation Message
 @dynamic text, source;
 
-- (id)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context 
+- (instancetype)initWithEntity:(NSEntityDescription *)entity insertIntoManagedObjectContext:(NSManagedObjectContext *)context 
 {
 	self = [super initWithEntity:entity insertIntoManagedObjectContext:context];
-	[self setValue:[NSNumber numberWithDouble:[[NSDate date] timeIntervalSinceReferenceDate]] forKey:@"timeSinceReferenceDate"];
+	[self setValue:@([NSDate date].timeIntervalSinceReferenceDate) forKey:@"timeSinceReferenceDate"];
 	return self;
 }
 
@@ -19,10 +19,10 @@
 	static NSDateFormatter *format = nil;
 	if(format == nil) {
 		format = [[NSDateFormatter alloc] init];
-		[format setDateFormat:@"MMM dd, HH:mm"];
+		format.dateFormat = @"MMM dd, HH:mm";
 	}
 	
-	NSString *name = self.fromMe ? @"Me" : [self.source name];
+	NSString *name = self.fromMe ? @"Me" : (self.source).name;
 	return [NSString stringWithFormat:@"%@ at %@", name, [format stringFromDate:self.time]];
 
 }
@@ -31,12 +31,12 @@
     [self willAccessValueForKey:@"fromMe"];
 	NSNumber *result = [self primitiveValueForKey:@"fromMe"];
     [self didAccessValueForKey:@"fromMe"];
-	return [result boolValue];
+	return result.boolValue;
 }
 
 - (void)setFromMe:(BOOL)fromMe {
     [self willChangeValueForKey:@"fromMe"];
-    [self setPrimitiveValue:[NSNumber numberWithBool:fromMe] forKey:@"fromMe"];
+    [self setPrimitiveValue:@(fromMe) forKey:@"fromMe"];
     [self didChangeValueForKey:@"fromMe"];
 }
 

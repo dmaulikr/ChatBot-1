@@ -2,9 +2,7 @@
 #import "GPNSObjectAdditions.h"
 #import "AppDelegate.h"
 
-
 @implementation Repository
-@synthesize delegate;
 
 - (NSArray*)findBuddies {
 	return [self.delegate findAllOfEntity:@"Buddy"];
@@ -23,7 +21,7 @@
 - (Message*)messageForBuddy:(Buddy*)buddy {
 	Message *msg = [self.delegate entityForName:@"Message"];
 	msg.source = buddy;
-	[self.delegate.context refreshObject:buddy mergeChanges:YES];
+	[self.delegate.managedObjectContext refreshObject:buddy mergeChanges:YES];
 	return msg;
 }
 

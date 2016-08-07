@@ -6,23 +6,26 @@
 
 
 @interface ChatController ()
-@property(nonatomic,strong) NSMutableData *receivedData;
-@property(nonatomic,strong) NSMutableData *startData;
-@property(nonatomic,strong) NSMutableData *start2Data;
-@property(nonatomic,strong) NSURLConnection *receivedConnection;
-@property(nonatomic,strong) NSURLConnection *startConnection;
-@property(nonatomic,strong) NSURLConnection *start2Connection;
-@property(nonatomic,strong) NSString *botId;
-@property(nonatomic,strong) NSString *botcust2;
+
+@property (nonatomic, strong) NSMutableData *receivedData;
+@property (nonatomic, strong) NSMutableData *startData;
+@property (nonatomic, strong) NSMutableData *start2Data;
+@property (nonatomic, strong) NSURLConnection *receivedConnection;
+@property (nonatomic, strong) NSURLConnection *startConnection;
+@property (nonatomic, strong) NSURLConnection *start2Connection;
+@property (nonatomic, strong) NSString *botId;
+@property (nonatomic, strong) NSString *botcust2;
+
 - (void)requestBotResponse;
 - (void)cancelBotResponseRequest;
 - (void)addMessage:(NSString*)text fromMe:(BOOL)fromMe;
 @end
 
 @implementation ChatController
-@synthesize buddy, repository, responses, receivedData, startData, receivedConnection, startConnection, botId, start2Data, start2Connection, botcust2;
 
-- (id)init {
+#pragma Lifecycle
+
+- (instancetype)init {
 	self = [super initWithStyle:UITableViewStyleGrouped];
 	return self;
 }
@@ -31,8 +34,7 @@
 	[self cancelBotResponseRequest];
 }
 
-#pragma mark -
-#pragma mark View lifecycle
+#pragma mark - View lifecycle
 
 - (void)loadView {
 	[super loadView];
@@ -49,7 +51,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-	NSInteger section = [self.buddy.messages count];
+	NSInteger section = (self.buddy.messages).count;
 	if(section > 0)
 		[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section-1] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
@@ -63,11 +65,10 @@
 	[self cancelBotResponseRequest];
 }
 
-#pragma mark -
-#pragma mark UITableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return [self.buddy.messages count];
+	return (self.buddy.messages).count;
 }
 
 
@@ -76,9 +77,9 @@
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	Message *message = [self.buddy.messages objectAtIndex:indexPath.section];
+	Message *message = (self.buddy.messages)[indexPath.section];
 	TextViewCell *cell = [TextViewCell cellForTableView:tableView];
-	cell.textView.text = [message text];
+	cell.textView.text = message.text;
 	cell.backgroundColor = message.fromMe ? [UIColor whiteColor] : [UIColor colorWithRed:.95 green:.95 blue:1 alpha:1];
 										
 	return cell;
@@ -99,7 +100,7 @@
 	label.shadowColor  = [UIColor colorWithRed:1 green:1 blue:1 alpha:.55];
 	label.shadowOffset = CGSizeMake(0.0, 1.0);
 
-	label.text = [[self.buddy.messages objectAtIndex:section] header];
+	label.text = [(self.buddy.messages)[section] header];
 
 	UIView *view = [UIView xnew];
 	[view addSubview:label];
@@ -111,42 +112,38 @@
 	return 20;
 }
 
-#pragma mark -
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static int minSize = 32;
 	static TextViewCell *dummy = nil;
 	if(dummy == nil)
 		dummy = [TextViewCell cellForTableView:nil];
-	dummy.textView.text = [[self.buddy.messages objectAtIndex:indexPath.section] text];
+	dummy.textView.text = [(self.buddy.messages)[indexPath.section] text];
     CGSize size = [dummy.textView sizeThatFits:CGSizeMake(320.0, INFINITY)];
     size.height += 12.0;
 	return size.height > minSize ? size.height : minSize;
 }
 
-
-#pragma mark -
-#pragma mark SendControllerDelegate
+#pragma mark - SendControllerDelegate
 
 - (void)didSendMessage:(NSString*)text {
 	[self addMessage:text fromMe:YES];
 }
 
-#pragma mark -
-#pragma mark Private methods
+#pragma mark - Private methods
 
 - (void)responseReceived:(NSString*)response {
 	[self addMessage:response fromMe:NO];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    if(connection == receivedConnection)
-        [receivedData setLength:0];
-    else if(connection == startConnection)
-        [startData setLength:0];
+    if(connection == self.receivedConnection)
+        self.receivedData.length = 0;
+    else if(connection == self.startConnection)
+        self.startData.length = 0;
     else
-        [start2Data setLength:0];
+       self.start2Data.length = 0;
         
 }
 
@@ -154,51 +151,51 @@
     // Append the new data to receivedData.
     // receivedData is an instance variable declared elsewhere.
     
-    if(connection == receivedConnection)
-        [receivedData appendData:data];
-    else if(connection == startConnection)
-        [startData appendData:data];
+    if(connection == self.receivedConnection)
+        [self.receivedData appendData:data];
+    else if(connection == self.startConnection)
+        [self.startData appendData:data];
     else
-        [start2Data appendData:data];
+        [self.start2Data appendData:data];
             
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // inform the user
-    NSLog(@"Connection failed! Error - %@ %@", [error localizedDescription], [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+    NSLog(@"Connection failed! Error - %@ %@", error.localizedDescription, error.userInfo[NSURLErrorFailingURLStringErrorKey]);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Succeeded! Received %d bytes of data",[receivedData length]);
-    if(connection == receivedConnection) {
+    NSLog(@"Succeeded! Received %d bytes of data", self.receivedData.length);
+    if(connection == self.receivedConnection) {
         //NSLog(@"Received %@",[[NSString alloc] initWithBytes:[receivedData bytes] length:[receivedData length] encoding:NSUTF8StringEncoding]);         
-        NSString *content = [[NSString alloc] initWithBytes:[receivedData bytes] length:[receivedData length] encoding:NSUTF8StringEncoding];
+        NSString *content = [[NSString alloc] initWithBytes:self.receivedData.bytes length:self.receivedData.length encoding:NSUTF8StringEncoding];
         NSError *error = nil;
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<b>A.L.I.C.E.:<\\/b> *(.*?)<br\\/>" options:0 error:&error];
         NSAssert1(error == nil, @"Regexp error %@", error);
-        NSArray *matches = [regex matchesInString:content options:0 range:NSMakeRange(0, [content length])];
-        NSString *reply = [content substringWithRange:[[matches objectAtIndex:0] rangeAtIndex:1]];
+        NSArray *matches = [regex matchesInString:content options:0 range:NSMakeRange(0, content.length)];
+        NSString *reply = [content substringWithRange:[matches[0] rangeAtIndex:1]];
         NSLog(@"Reply: %@",reply);
         [NSThread sleepForTimeInterval:5]; // don't answer immediately
         [self responseReceived:reply];
-    } else if(connection == startConnection) {
-        NSLog(@"Succeeded! Received %d bytes of data",[startData length]);
-        NSString *content = [[NSString alloc] initWithBytes:[startData bytes] length:[startData length] encoding:NSUTF8StringEncoding];
+    } else if(connection == self.startConnection) {
+        NSLog(@"Succeeded! Received %d bytes of data", self.startData.length);
+        NSString *content = [[NSString alloc] initWithBytes:self.startData.bytes length:self.startData.length encoding:NSUTF8StringEncoding];
         NSError *error = nil;
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"botid=(\\w+)" options:0 error:&error];
         NSAssert1(error == nil, @"Regexp error %@", error);
-        NSArray *matches = [regex matchesInString:content options:0 range:NSMakeRange(0, [content length])];
-        self.botId = [content substringWithRange:[[matches objectAtIndex:0] rangeAtIndex:1]];
+        NSArray *matches = [regex matchesInString:content options:0 range:NSMakeRange(0, content.length)];
+        self.botId = [content substringWithRange:[matches[0] rangeAtIndex:1]];
         NSLog(@"Botid is now %@",self.botId);
         [self startStep2Bot];
     } else {
-        NSLog(@"Succeeded! Received %d bytes of data",[start2Data length]);
-        NSString *content = [[NSString alloc] initWithBytes:[start2Data bytes] length:[start2Data length] encoding:NSUTF8StringEncoding];
+        NSLog(@"Succeeded! Received %d bytes of data", self.start2Data.length);
+        NSString *content = [[NSString alloc] initWithBytes:self.start2Data.bytes length:self.start2Data.length encoding:NSUTF8StringEncoding];
         NSError *error = nil;
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"name=\"botcust2\" value=\"(\\w+)" options:0 error:&error];
         NSAssert1(error == nil, @"Regexp error %@", error);
-        NSArray *matches = [regex matchesInString:content options:0 range:NSMakeRange(0, [content length])];
-        self.botcust2 = [content substringWithRange:[[matches objectAtIndex:0] rangeAtIndex:1]];
+        NSArray *matches = [regex matchesInString:content options:0 range:NSMakeRange(0, content.length)];
+        self.botcust2 = [content substringWithRange:[matches[0] rangeAtIndex:1]];
         NSLog(@"botcust2 is now %@",self.botcust2);
     }
 }
@@ -208,9 +205,8 @@
     NSLog(@"Getting url %@",url);
     NSURLRequest *theRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     
-    startConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-    startData = [NSMutableData data];
-    
+    self.startConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    self.startData = [NSMutableData data];
 }
 
 - (void)startStep2Bot {
@@ -218,24 +214,24 @@
     NSLog(@"Getting url %@",url);
     NSURLRequest *theRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     
-    start2Connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-    start2Data = [NSMutableData data];
+    self.start2Connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    self.start2Data = [NSMutableData data];
 }
 
 - (void)requestBotResponse {
     if(self.botId != nil && self.botcust2 != nil) {
         
-        NSString *lastMessage = [[self.buddy.messages lastObject] text];
+        NSString *lastMessage = [(self.buddy.messages).lastObject text];
         NSString *postString = [NSString stringWithFormat:@"input=%@&botcust2=%@",[lastMessage stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],self.botcust2];
 
         NSString *url = [NSString stringWithFormat:@"http://sheepridge.pandorabots.com/pandora/talk?botid=%@&skin=custom_input",self.botId];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
         request.HTTPMethod = @"POST";
         NSLog(@"Posting url %@\n%@",url,postString);
-        [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+        request.HTTPBody = [postString dataUsingEncoding:NSUTF8StringEncoding];
 
-        receivedConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        receivedData = [NSMutableData data];
+        self.receivedConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        self.receivedData = [NSMutableData data];
     } else {
         [self performSelector:@selector(responseReceived:) withObject:self.responses[rand() % sizeof(self.responses)] afterDelay:rand() % 15 + 2];
     }
@@ -255,7 +251,7 @@
     }
 	[self.repository asyncSave];
 	[self.tableView reloadData];
-	[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:[self.buddy.messages count] - 1] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+	[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:(self.buddy.messages).count - 1] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 - (void)add:(id)sender {

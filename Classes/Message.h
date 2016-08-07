@@ -3,12 +3,11 @@
 
 @class Buddy;
 
-@interface Message : NSManagedObject {
+@interface Message : NSManagedObject
 
-}
-@property(nonatomic,strong) NSString *text;
-@property(nonatomic,strong) Buddy *source;
+@property (nonatomic, strong) NSString *text;
+@property (nonatomic, strong) Buddy *source;
 @property(weak, nonatomic,readonly) NSDate *time;
-@property(nonatomic,assign) BOOL fromMe;
+@property (nonatomic, assign) BOOL fromMe;
 @property(weak, nonatomic,readonly) NSString *header;
 @end

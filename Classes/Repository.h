@@ -5,13 +5,14 @@
 
 @class AppDelegate;
 
-@interface Repository : NSObject {
-}
-@property (nonatomic, strong) AppDelegate *delegate;
+@interface Repository : NSObject
 
-- (NSArray*)findBuddies;
-- (NSArray*)findMessages;
-- (Buddy*)buddyWithName:(NSString*)name;
+@property (nonatomic, strong) AppDelegate *delegate;
+@property (nonatomic, readonly, copy) NSArray *findBuddies;
+@property (nonatomic, readonly, copy) NSArray *findMessages;
+
+- (Buddy *)buddyWithName:(NSString *)name;
 - (void)asyncSave;
-- (Message*)messageForBuddy:(Buddy*)buddy;
+- (Message *)messageForBuddy:(Buddy *)buddy;
+
 @end

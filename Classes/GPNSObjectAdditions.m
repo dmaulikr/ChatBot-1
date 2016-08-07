@@ -16,7 +16,7 @@
 	NSUInteger i;
 	for(i=0; i<count; i++) {
 		objc_property_t prop = props[i];
-		NSString *propName = [NSString stringWithCString:property_getName(prop) encoding:NSASCIIStringEncoding];
+		NSString *propName = @(property_getName(prop));
 		[result addObject:propName];
 	}
 	if([self superclass] != nil) {

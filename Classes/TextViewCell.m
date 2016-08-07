@@ -1,12 +1,11 @@
 #import "TextViewCell.h"
 
-
 @interface TextViewCell ()
 @end
 
-
 @implementation TextViewCell
-@synthesize textView;
+
+#pragma mark - Cell
 
 + (UITableViewCell*)cellForTableView:(UITableView*)tableView {
 	NSString *ident = NSStringFromClass([self class]);
@@ -24,6 +23,5 @@
 
 	return cell;
 }
-	
 
 @end

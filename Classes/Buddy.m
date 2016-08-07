@@ -1,6 +1,5 @@
 #import "Buddy.h"
 
-
 @implementation Buddy
 @dynamic name, messages;
 
