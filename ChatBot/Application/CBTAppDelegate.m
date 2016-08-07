@@ -1,9 +1,9 @@
 #import <CoreData/CoreData.h>
-#import "AppDelegate.h"
-#import "BuddiesController.h"
+#import "CBTAppDelegate.h"
+#import "CBTBuddiesViewController.h"
 #import "GPNSObjectAdditions.h"
 
-@interface AppDelegate ()
+@interface CBTAppDelegate ()
 
 @property (nonatomic, strong, readwrite) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong, readwrite) NSManagedObjectModel *managedObjectModel;
@@ -11,14 +11,14 @@
 
 @end
 
-@implementation AppDelegate
+@implementation CBTAppDelegate
 
 #pragma mark - Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions { 
 
-	BuddiesController *buddies = [BuddiesController xnew];
-	self.repository = [Repository xnew];
+	CBTBuddiesViewController *buddies = [CBTBuddiesViewController xnew];
+	self.repository = [CBTRepository xnew];
     self.repository.delegate = self;
     buddies.repository = self.repository;
     [self addSortDescriptors];
@@ -61,21 +61,21 @@
 }
 
 - (void)addSortDescriptors {
-	NSEntityDescription *desc = (self.managedObjectModel).entitiesByName[@"Buddy"];
+	NSEntityDescription *desc = (self.managedObjectModel).entitiesByName[NSStringFromClass([CBTBuddy class])];
 	NSFetchedPropertyDescription *prop = desc.propertiesByName[@"messages"];
 	NSFetchRequest *fetchRequest = prop.fetchRequest;
 	NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"timeSinceReferenceDate" ascending:YES];
 	fetchRequest.sortDescriptors = @[sort];
 }
 
-- (Buddy*)buddyWithName:(NSString*)name {
-	Buddy *result = [self entityForName:@"Buddy"];
+- (CBTBuddy *)buddyWithName:(NSString*)name {
+	CBTBuddy *result = [self entityForName:NSStringFromClass([CBTBuddy class])];
 	result.name = name;
 	return result;
 }
 
-- (NSArray*)findBuddies {
-	return [self findAllOfEntity:@"Buddy"];
+- (NSArray *)findBuddies {
+	return [self findAllOfEntity:NSStringFromClass([CBTBuddy class])];
 }
 
 - (void)addHardCodedBuddies {
@@ -100,7 +100,7 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"TestTask" withExtension:@"momd"];
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"ChatBot" withExtension:@"momd"];
     //[[NSManagedObjectModel alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path]]
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
@@ -115,7 +115,7 @@
     // Create the coordinator and store
     
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"TestTask.sqlite"];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"ChatBot.sqlite"];
     NSError *error = nil;
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {

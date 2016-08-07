@@ -1,14 +1,14 @@
-#import "BuddiesController.h"
-#import "ChatController.h"
+#import "CBTBuddiesViewController.h"
+#import "CBTChatViewController.h"
 #import "GPNSObjectAdditions.h"
-#import "Buddy.h"
-#import "Repository.h"
+#import "CBTBuddy.h"
+#import "CBTRepository.h"
 
-@interface BuddiesController ()
+@interface CBTBuddiesViewController ()
 @property (nonatomic, strong) NSArray *buddies;
 @end
 
-@implementation BuddiesController
+@implementation CBTBuddiesViewController
 
 #pragma mark - View lifecycle
 
@@ -42,7 +42,7 @@
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-	Buddy *buddy = (self.buddies)[indexPath.row];
+	CBTBuddy *buddy = (self.buddies)[indexPath.row];
 	cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",buddy.name]];
 	cell.textLabel.text = buddy.name;
 	cell.detailTextLabel.text = buddy.lastMessage.text;
@@ -52,8 +52,8 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	Buddy *buddy = (self.buddies)[indexPath.row];
-	ChatController *ctrl = [ChatController xnew];
+	CBTBuddy *buddy = (self.buddies)[indexPath.row];
+	CBTChatViewController *ctrl = [CBTChatViewController xnew];
     ctrl.repository = self.repository;
 	ctrl.buddy = buddy;
 	[self.navigationController pushViewController:ctrl animated:YES];

@@ -1,11 +1,11 @@
-#import "ChatController.h"
+#import "CBTChatViewController.h"
 #import "GPNSObjectAdditions.h"
-#import "Message.h"
+#import "CBTMessage.h"
 #import "TextViewCell.h"
 #import "NSString+SKAdditions.h"
 
 
-@interface ChatController ()
+@interface CBTChatViewController ()
 
 @property (nonatomic, strong) NSMutableData *receivedData;
 @property (nonatomic, strong) NSMutableData *startData;
@@ -21,7 +21,7 @@
 - (void)addMessage:(NSString*)text fromMe:(BOOL)fromMe;
 @end
 
-@implementation ChatController
+@implementation CBTChatViewController
 
 #pragma Lifecycle
 
@@ -76,8 +76,8 @@
 	return 1;
 }
 
-- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	Message *message = (self.buddy.messages)[indexPath.section];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	CBTMessage *message = (self.buddy.messages)[indexPath.section];
 	TextViewCell *cell = [TextViewCell cellForTableView:tableView];
 	cell.textView.text = message.text;
 	cell.backgroundColor = message.fromMe ? [UIColor whiteColor] : [UIColor colorWithRed:.95 green:.95 blue:1 alpha:1];
@@ -125,7 +125,7 @@
 	return size.height > minSize ? size.height : minSize;
 }
 
-#pragma mark - SendControllerDelegate
+#pragma mark - CBTSendControllerDelegate
 
 - (void)didSendMessage:(NSString*)text {
 	[self addMessage:text fromMe:YES];
@@ -241,9 +241,9 @@
 	[NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
-- (void)addMessage:(NSString*)text fromMe:(BOOL)fromMe {
+- (void)addMessage:(NSString *)text fromMe:(BOOL)fromMe {
 	NSAssert(self.repository != nil, @"Not initialized");
-	Message *msg = [self.repository messageForBuddy:self.buddy];
+	CBTMessage *msg = [self.repository messageForBuddy:self.buddy];
 	msg.text = text;
 	msg.fromMe = fromMe;
     if(fromMe) {
@@ -255,7 +255,7 @@
 }
 
 - (void)add:(id)sender {
-	SendController *ctrl = [SendController xnew];
+	CBTSendViewController *ctrl = [CBTSendViewController xnew];
 	ctrl.delegate = self;
 	[self presentModalViewController:[[UINavigationController alloc] initWithRootViewController:ctrl] animated:YES];
 }

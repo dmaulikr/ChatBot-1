@@ -1,11 +1,11 @@
 #import <UIKit/UIKit.h>
-#import "Repository.h"
+#import "CBTRepository.h"
 
-@interface AppDelegate : NSObject <UIApplicationDelegate>
+@interface CBTAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong) UINavigationController *navigationController;
-@property (nonatomic, strong) Repository *repository;
+@property (nonatomic, strong) CBTRepository *repository;
 @property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;

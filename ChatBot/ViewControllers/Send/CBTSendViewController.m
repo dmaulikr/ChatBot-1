@@ -1,7 +1,7 @@
-#import "SendController.h"
+#import "CBTSendViewController.h"
 
 
-@implementation SendController
+@implementation CBTSendViewController
 @synthesize textView, text, delegate;
 
 - (void)dealloc {
