@@ -26,7 +26,7 @@
 }
 
 - (void)asyncSave {
-	[self.delegate performSelector:@selector(save) withObject:nil afterDelay:0];
+	[self.delegate performSelector:@selector(saveContext) withObject:nil afterDelay:0];
 }
 
 @end

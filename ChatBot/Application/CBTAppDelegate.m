@@ -17,17 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions { 
 
-	CBTBuddiesViewController *buddies = [CBTBuddiesViewController xnew];
+    UINavigationController *navigationController = (UINavigationController *) self.window.rootViewController;
+    CBTBuddiesViewController *buddiesViewController = (CBTBuddiesViewController *)navigationController.topViewController;
 	self.repository = [CBTRepository xnew];
     self.repository.delegate = self;
-    buddies.repository = self.repository;
+    buddiesViewController.repository = self.repository;
     [self addSortDescriptors];
 	[self addHardCodedBuddies];
-
-	self.navigationController = [[UINavigationController alloc] initWithRootViewController:buddies];
-	self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = self.navigationController;
-    [self.window makeKeyAndVisible];
 
 	return YES;
 }

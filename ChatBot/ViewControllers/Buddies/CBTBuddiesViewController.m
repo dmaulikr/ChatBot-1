@@ -3,6 +3,7 @@
 #import "GPNSObjectAdditions.h"
 #import "CBTBuddy.h"
 #import "CBTRepository.h"
+#import "CBTBuddyTableViewCell.h"
 
 @interface CBTBuddiesViewController ()
 @property (nonatomic, strong) NSArray *buddies;
@@ -15,8 +16,12 @@
 - (void)loadView {
 	[super loadView];
 	NSAssert(self.repository != nil,@"Not initialized");
-	self.title = @"Buddies";
-	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:nil];
+	self.title = NSLocalizedString(@"Buddies", nil) ;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -27,25 +32,22 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return (self.buddies).count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"BuddyCell";
+    //static NSString *CellIdentifier = @"BuddyCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    CBTBuddyTableViewCell *cell = (CBTBuddyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BuddyCell" forIndexPath:indexPath];
     
 	CBTBuddy *buddy = (self.buddies)[indexPath.row];
-	cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.jpg",buddy.name]];
-	cell.textLabel.text = buddy.name;
-	cell.detailTextLabel.text = buddy.lastMessage.text;
+    
+    UIImage *avatar = [UIImage imageNamed:buddy.name];
+    cell.avatarImageView.image = avatar;
+    cell.nameLabel.text = buddy.name;
+    cell.lastMessageLabel.text = buddy.lastMessage.text;
+    
     return cell;
 }
 
@@ -57,10 +59,6 @@
     ctrl.repository = self.repository;
 	ctrl.buddy = buddy;
 	[self.navigationController pushViewController:ctrl animated:YES];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 48;
 }
 
 @end

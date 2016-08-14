@@ -11,6 +11,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		519ACD941242D40D00768044 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519ACD931242D40D00768044 /* CoreData.framework */; };
+		9154D9491D60A5D40017F5D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9154D9481D60A5D40017F5D9 /* Main.storyboard */; };
+		9154D9EF1D60A7250017F5D9 /* CBTBuddyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9154D9EE1D60A7250017F5D9 /* CBTBuddyTableViewCell.m */; };
 		91A152901D57C6B200AF50AA /* CBTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A1526A1D57C6B200AF50AA /* CBTAppDelegate.m */; };
 		91A152961D57C6B200AF50AA /* ChatBot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91A152791D57C6B200AF50AA /* ChatBot.xcdatamodeld */; };
 		91A152971D57C6B200AF50AA /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91A1527C1D57C6B200AF50AA /* Media.xcassets */; };
@@ -35,6 +37,9 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		519ACD931242D40D00768044 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9154D9481D60A5D40017F5D9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		9154D9ED1D60A7250017F5D9 /* CBTBuddyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTBuddyTableViewCell.h; sourceTree = "<group>"; };
+		9154D9EE1D60A7250017F5D9 /* CBTBuddyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTBuddyTableViewCell.m; sourceTree = "<group>"; };
 		91A152691D57C6B200AF50AA /* CBTAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTAppDelegate.h; sourceTree = "<group>"; };
 		91A1526A1D57C6B200AF50AA /* CBTAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTAppDelegate.m; sourceTree = "<group>"; };
 		91A1527A1D57C6B200AF50AA /* ChatBot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChatBot.xcdatamodel; sourceTree = "<group>"; };
@@ -111,6 +116,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9154D9EC1D60A7110017F5D9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9154D9ED1D60A7250017F5D9 /* CBTBuddyTableViewCell.h */,
+				9154D9EE1D60A7250017F5D9 /* CBTBuddyTableViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		91A152671D57C6B200AF50AA /* ChatBot */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				91A1527E1D57C6B200AF50AA /* LaunchScreen.storyboard */,
+				9154D9481D60A5D40017F5D9 /* Main.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -206,6 +221,7 @@
 		91A152841D57C6B200AF50AA /* Buddies */ = {
 			isa = PBXGroup;
 			children = (
+				9154D9EC1D60A7110017F5D9 /* Cells */,
 				91A152851D57C6B200AF50AA /* CBTBuddiesViewController.h */,
 				91A152861D57C6B200AF50AA /* CBTBuddiesViewController.m */,
 			);
@@ -323,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9154D9491D60A5D40017F5D9 /* Main.storyboard in Resources */,
 				91A152971D57C6B200AF50AA /* Media.xcassets in Resources */,
 				91A152981D57C6B200AF50AA /* LaunchScreen.storyboard in Resources */,
 			);
@@ -336,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91A1529D1D57C6B200AF50AA /* CBTChatViewController.m in Sources */,
+				9154D9EF1D60A7250017F5D9 /* CBTBuddyTableViewCell.m in Sources */,
 				91A152B51D57C90400AF50AA /* CBTBuddy+CoreDataProperties.m in Sources */,
 				91A152A91D57C7B700AF50AA /* NSString+SKAdditions.m in Sources */,
 				91A152961D57C6B200AF50AA /* ChatBot.xcdatamodeld in Sources */,
@@ -368,6 +386,7 @@
 				GCC_PREFIX_HEADER = ChatBot/SupportingFiles/Chat_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				INFOPLIST_FILE = "ChatBot/SupportingFiles/Chat-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = Chat;
 			};
 			name = Debug;
@@ -382,6 +401,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ChatBot/SupportingFiles/Chat_Prefix.pch;
 				INFOPLIST_FILE = "ChatBot/SupportingFiles/Chat-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = Chat;
 				VALIDATE_PRODUCT = YES;
 			};

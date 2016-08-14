@@ -4,7 +4,7 @@
 @interface CBTAppDelegate : NSObject <UIApplicationDelegate>
 
 @property (nonatomic, strong) UIWindow *window;
-@property (nonatomic, strong) UINavigationController *navigationController;
+@property (nonatomic, strong) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, strong) CBTRepository *repository;
 @property (nonatomic, strong, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong, readonly) NSManagedObjectModel *managedObjectModel;
