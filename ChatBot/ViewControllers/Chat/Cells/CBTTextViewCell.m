@@ -1,17 +1,17 @@
-#import "TextViewCell.h"
+#import "CBTTextViewCell.h"
 
-@interface TextViewCell ()
+@interface CBTTextViewCell ()
 @end
 
-@implementation TextViewCell
+@implementation CBTTextViewCell
 
 #pragma mark - Cell
 
 + (UITableViewCell*)cellForTableView:(UITableView*)tableView {
 	NSString *ident = NSStringFromClass([self class]);
-	TextViewCell *cell = (id)[tableView dequeueReusableCellWithIdentifier:ident];
+	CBTTextViewCell *cell = (id)[tableView dequeueReusableCellWithIdentifier:ident];
 	if(cell == nil) {
-		cell = [[TextViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ident];
+		cell = [[CBTTextViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ident];
 
 		cell.textView = [[UILabel alloc] initWithFrame:cell.bounds];
 		cell.textView.backgroundColor = [UIColor clearColor];

@@ -1,9 +1,9 @@
 #import "CBTChatViewController.h"
 #import "GPNSObjectAdditions.h"
 #import "CBTMessage.h"
-#import "TextViewCell.h"
+#import "CBTTextViewCell.h"
 #import "NSString+SKAdditions.h"
-
+#import "CBTChatBotAPIManager.h"
 
 @interface CBTChatViewController ()
 
@@ -19,6 +19,7 @@
 - (void)requestBotResponse;
 - (void)cancelBotResponseRequest;
 - (void)addMessage:(NSString*)text fromMe:(BOOL)fromMe;
+
 @end
 
 @implementation CBTChatViewController
@@ -46,14 +47,17 @@
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(add:)];
 	self.title = self.buddy.name;
     
-    if(self.useTheBot) [self startTheBot];
+    if(self.useTheBot) {
+        [self startTheBot];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	NSInteger section = (self.buddy.messages).count;
-	if(section > 0)
-		[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section-1] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    if(section > 0) {
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section-1] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -78,7 +82,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	CBTMessage *message = (self.buddy.messages)[indexPath.section];
-	TextViewCell *cell = [TextViewCell cellForTableView:tableView];
+	CBTTextViewCell *cell = [CBTTextViewCell cellForTableView:tableView];
 	cell.textView.text = message.text;
 	cell.backgroundColor = message.fromMe ? [UIColor whiteColor] : [UIColor colorWithRed:.95 green:.95 blue:1 alpha:1];
 										
@@ -116,9 +120,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static int minSize = 32;
-	static TextViewCell *dummy = nil;
+	static CBTTextViewCell *dummy = nil;
 	if(dummy == nil)
-		dummy = [TextViewCell cellForTableView:nil];
+		dummy = [CBTTextViewCell cellForTableView:nil];
 	dummy.textView.text = [(self.buddy.messages)[indexPath.section] text];
     CGSize size = [dummy.textView sizeThatFits:CGSizeMake(320.0, INFINITY)];
     size.height += 12.0;
@@ -131,107 +135,40 @@
 	[self addMessage:text fromMe:YES];
 }
 
-#pragma mark - Private methods
+#pragma mark - ResponseRecieved
 
 - (void)responseReceived:(NSString*)response {
 	[self addMessage:response fromMe:NO];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    if(connection == self.receivedConnection)
-        self.receivedData.length = 0;
-    else if(connection == self.startConnection)
-        self.startData.length = 0;
-    else
-       self.start2Data.length = 0;
-        
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    // Append the new data to receivedData.
-    // receivedData is an instance variable declared elsewhere.
-    
-    if(connection == self.receivedConnection)
-        [self.receivedData appendData:data];
-    else if(connection == self.startConnection)
-        [self.startData appendData:data];
-    else
-        [self.start2Data appendData:data];
-            
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    // inform the user
-    NSLog(@"Connection failed! Error - %@ %@", error.localizedDescription, error.userInfo[NSURLErrorFailingURLStringErrorKey]);
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Succeeded! Received %d bytes of data", self.receivedData.length);
-    if(connection == self.receivedConnection) {
-        //NSLog(@"Received %@",[[NSString alloc] initWithBytes:[receivedData bytes] length:[receivedData length] encoding:NSUTF8StringEncoding]);         
-        NSString *content = [[NSString alloc] initWithBytes:self.receivedData.bytes length:self.receivedData.length encoding:NSUTF8StringEncoding];
-        NSError *error = nil;
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<b>A.L.I.C.E.:<\\/b> *(.*?)<br\\/>" options:0 error:&error];
-        NSAssert1(error == nil, @"Regexp error %@", error);
-        NSArray *matches = [regex matchesInString:content options:0 range:NSMakeRange(0, content.length)];
-        NSString *reply = [content substringWithRange:[matches[0] rangeAtIndex:1]];
-        NSLog(@"Reply: %@",reply);
-        [NSThread sleepForTimeInterval:5]; // don't answer immediately
-        [self responseReceived:reply];
-    } else if(connection == self.startConnection) {
-        NSLog(@"Succeeded! Received %d bytes of data", self.startData.length);
-        NSString *content = [[NSString alloc] initWithBytes:self.startData.bytes length:self.startData.length encoding:NSUTF8StringEncoding];
-        NSError *error = nil;
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"botid=(\\w+)" options:0 error:&error];
-        NSAssert1(error == nil, @"Regexp error %@", error);
-        NSArray *matches = [regex matchesInString:content options:0 range:NSMakeRange(0, content.length)];
-        self.botId = [content substringWithRange:[matches[0] rangeAtIndex:1]];
-        NSLog(@"Botid is now %@",self.botId);
-        [self startStep2Bot];
-    } else {
-        NSLog(@"Succeeded! Received %d bytes of data", self.start2Data.length);
-        NSString *content = [[NSString alloc] initWithBytes:self.start2Data.bytes length:self.start2Data.length encoding:NSUTF8StringEncoding];
-        NSError *error = nil;
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"name=\"botcust2\" value=\"(\\w+)" options:0 error:&error];
-        NSAssert1(error == nil, @"Regexp error %@", error);
-        NSArray *matches = [regex matchesInString:content options:0 range:NSMakeRange(0, content.length)];
-        self.botcust2 = [content substringWithRange:[matches[0] rangeAtIndex:1]];
-        NSLog(@"botcust2 is now %@",self.botcust2);
-    }
-}
-
 - (void)startTheBot {
-    NSString *url = @"http://alice.pandorabots.com";
-    NSLog(@"Getting url %@",url);
-    NSURLRequest *theRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    
-    self.startConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-    self.startData = [NSMutableData data];
+    __weak CBTChatViewController *weakSelf = self;
+    [CBTChatBotAPIManager retrieveBotIDWithCompletion:^(NSString *botID) {
+        weakSelf.botId = botID;
+        [weakSelf startStep2Bot];
+    }];
 }
 
 - (void)startStep2Bot {
-    NSString *url = [NSString stringWithFormat:@"http://sheepridge.pandorabots.com/pandora/talk?botid=%@&skin=custom_input",self.botId];
-    NSLog(@"Getting url %@",url);
-    NSURLRequest *theRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    
-    self.start2Connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-    self.start2Data = [NSMutableData data];
+    __weak CBTChatViewController *weakSelf = self;
+    [CBTChatBotAPIManager retrieveBotCust2FromBotWithID:self.botId
+                                             completion:^(NSString *botCust2) {
+        weakSelf.botcust2 = botCust2;
+    }];
 }
 
 - (void)requestBotResponse {
     if(self.botId != nil && self.botcust2 != nil) {
         
         NSString *lastMessage = [(self.buddy.messages).lastObject text];
-        NSString *postString = [NSString stringWithFormat:@"input=%@&botcust2=%@",[lastMessage stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],self.botcust2];
-
-        NSString *url = [NSString stringWithFormat:@"http://sheepridge.pandorabots.com/pandora/talk?botid=%@&skin=custom_input",self.botId];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-        request.HTTPMethod = @"POST";
-        NSLog(@"Posting url %@\n%@",url,postString);
-        request.HTTPBody = [postString dataUsingEncoding:NSUTF8StringEncoding];
-
-        self.receivedConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        self.receivedData = [NSMutableData data];
+        
+        __weak CBTChatViewController *weakSelf = self;
+        [CBTChatBotAPIManager requestReplyFromBotWithID:self.botId
+                                               botCust2:self.botcust2
+                                            lastMessage:lastMessage
+                                             completion:^(NSString *reply) {
+                                                 [weakSelf responseReceived:reply];
+                                             }];
     } else {
         [self performSelector:@selector(responseReceived:) withObject:self.responses[rand() % sizeof(self.responses)] afterDelay:rand() % 15 + 2];
     }
