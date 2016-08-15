@@ -33,7 +33,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CBTBuddyTableViewCell *cell = (CBTBuddyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BuddyCell" forIndexPath:indexPath];
+    CBTBuddyTableViewCell *cell = (CBTBuddyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"BuddyTableViewCell" forIndexPath:indexPath];
     
 	CBTBuddy *buddy = self.buddies[indexPath.row];
     

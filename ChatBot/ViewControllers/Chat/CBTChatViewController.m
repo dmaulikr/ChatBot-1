@@ -1,20 +1,16 @@
 #import "CBTChatViewController.h"
 #import "GPNSObjectAdditions.h"
 #import "CBTMessage.h"
-#import "CBTTextViewCell.h"
 #import "NSString+SKAdditions.h"
 #import "CBTChatBotAPIManager.h"
+#import "CBTMessageTableViewCell.h"
 
 @interface CBTChatViewController ()
 
-@property (nonatomic, strong) NSMutableData *receivedData;
-@property (nonatomic, strong) NSMutableData *startData;
-@property (nonatomic, strong) NSMutableData *start2Data;
-@property (nonatomic, strong) NSURLConnection *receivedConnection;
-@property (nonatomic, strong) NSURLConnection *startConnection;
-@property (nonatomic, strong) NSURLConnection *start2Connection;
 @property (nonatomic, strong) NSString *botId;
 @property (nonatomic, strong) NSString *botcust2;
+
+@property (nonatomic, strong) CBTMessageTableViewCell *messageSizingCell;
 
 - (void)requestBotResponse;
 - (void)cancelBotResponseRequest;
@@ -52,6 +48,15 @@
     }
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.estimatedRowHeight = 80;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    
+    [self.tableView setNeedsLayout];
+    [self.tableView layoutIfNeeded];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 	NSInteger section = (self.buddy.messages).count;
@@ -69,23 +74,40 @@
 	[self cancelBotResponseRequest];
 }
 
+#pragma mark - Sizing
+
+- (CBTMessageTableViewCell *)messageSizingCell {
+    if (!_messageSizingCell) {
+        _messageSizingCell = [[CBTMessageTableViewCell alloc] init];
+    }
+    
+    return _messageSizingCell;
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return (self.buddy.messages).count;
+	return self.buddy.messages.count;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	CBTMessage *message = (self.buddy.messages)[indexPath.section];
-	CBTTextViewCell *cell = [CBTTextViewCell cellForTableView:tableView];
-	cell.textView.text = message.text;
-	cell.backgroundColor = message.fromMe ? [UIColor whiteColor] : [UIColor colorWithRed:.95 green:.95 blue:1 alpha:1];
-										
+	CBTMessage *message = self.buddy.messages[indexPath.section];
+
+    CBTMessageTableViewCell *cell = (CBTMessageTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"MessageTableViewCell" forIndexPath:indexPath];
+    cell.messageLabel.text = message.text;
+    
+    if (message.fromMe) {
+        cell.backgroundColor = [UIColor whiteColor];
+        cell.messageLabel.textAlignment = NSTextAlignmentRight;
+    } else {
+        cell.backgroundColor = [UIColor colorWithRed:0.95f green:0.95f blue:1.0f alpha:1.0f];
+        cell.messageLabel.textAlignment = NSTextAlignmentLeft;
+    }
+    
 	return cell;
 }
 
@@ -118,15 +140,8 @@
 
 #pragma mark - UITableViewDelegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	static int minSize = 32;
-	static CBTTextViewCell *dummy = nil;
-	if(dummy == nil)
-		dummy = [CBTTextViewCell cellForTableView:nil];
-	dummy.textView.text = [(self.buddy.messages)[indexPath.section] text];
-    CGSize size = [dummy.textView sizeThatFits:CGSizeMake(320.0, INFINITY)];
-    size.height += 12.0;
-	return size.height > minSize ? size.height : minSize;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - CBTSendControllerDelegate

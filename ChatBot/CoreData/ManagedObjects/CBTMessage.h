@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CBTMessage : NSManagedObject
 
-@property(weak, nonatomic,readonly) NSDate *time;
+@property (weak, nonatomic,readonly) NSDate *time;
 @property (nonatomic, assign) BOOL fromMe;
-@property(weak, nonatomic,readonly) NSString *header;
+@property (weak, nonatomic,readonly) NSString *header;
 
 @end
 

@@ -11,6 +11,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		519ACD941242D40D00768044 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 519ACD931242D40D00768044 /* CoreData.framework */; };
+		913B6A511D62762200F1C064 /* CBTMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 913B6A501D62762200F1C064 /* CBTMessageTableViewCell.m */; };
 		9154D9491D60A5D40017F5D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9154D9481D60A5D40017F5D9 /* Main.storyboard */; };
 		9154D9EF1D60A7250017F5D9 /* CBTBuddyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9154D9EE1D60A7250017F5D9 /* CBTBuddyTableViewCell.m */; };
 		9154DA271D6105920017F5D9 /* CBTChatBotAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9154DA261D6105920017F5D9 /* CBTChatBotAPIManager.m */; };
@@ -20,7 +21,6 @@
 		91A152981D57C6B200AF50AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91A1527E1D57C6B200AF50AA /* LaunchScreen.storyboard */; };
 		91A1529A1D57C6B200AF50AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A152821D57C6B200AF50AA /* main.m */; };
 		91A1529B1D57C6B200AF50AA /* CBTBuddiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A152861D57C6B200AF50AA /* CBTBuddiesViewController.m */; };
-		91A1529C1D57C6B200AF50AA /* CBTTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A1528A1D57C6B200AF50AA /* CBTTextViewCell.m */; };
 		91A1529D1D57C6B200AF50AA /* CBTChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A1528C1D57C6B200AF50AA /* CBTChatViewController.m */; };
 		91A1529E1D57C6B200AF50AA /* CBTSendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A1528F1D57C6B200AF50AA /* CBTSendViewController.m */; };
 		91A152A81D57C7B700AF50AA /* GPNSObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 91A152A11D57C7B700AF50AA /* GPNSObjectAdditions.m */; };
@@ -38,6 +38,8 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		519ACD931242D40D00768044 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		913B6A4F1D62762200F1C064 /* CBTMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTMessageTableViewCell.h; sourceTree = "<group>"; };
+		913B6A501D62762200F1C064 /* CBTMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTMessageTableViewCell.m; sourceTree = "<group>"; };
 		9154D9481D60A5D40017F5D9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9154D9ED1D60A7250017F5D9 /* CBTBuddyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTBuddyTableViewCell.h; sourceTree = "<group>"; };
 		9154D9EE1D60A7250017F5D9 /* CBTBuddyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTBuddyTableViewCell.m; sourceTree = "<group>"; };
@@ -53,8 +55,6 @@
 		91A152821D57C6B200AF50AA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		91A152851D57C6B200AF50AA /* CBTBuddiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTBuddiesViewController.h; sourceTree = "<group>"; };
 		91A152861D57C6B200AF50AA /* CBTBuddiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTBuddiesViewController.m; sourceTree = "<group>"; };
-		91A152891D57C6B200AF50AA /* CBTTextViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTTextViewCell.h; sourceTree = "<group>"; };
-		91A1528A1D57C6B200AF50AA /* CBTTextViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTTextViewCell.m; sourceTree = "<group>"; };
 		91A1528B1D57C6B200AF50AA /* CBTChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTChatViewController.h; sourceTree = "<group>"; };
 		91A1528C1D57C6B200AF50AA /* CBTChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBTChatViewController.m; sourceTree = "<group>"; };
 		91A1528E1D57C6B200AF50AA /* CBTSendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBTSendViewController.h; sourceTree = "<group>"; };
@@ -253,8 +253,8 @@
 		91A152881D57C6B200AF50AA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				91A152891D57C6B200AF50AA /* CBTTextViewCell.h */,
-				91A1528A1D57C6B200AF50AA /* CBTTextViewCell.m */,
+				913B6A4F1D62762200F1C064 /* CBTMessageTableViewCell.h */,
+				913B6A501D62762200F1C064 /* CBTMessageTableViewCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -380,7 +380,7 @@
 				91A1529A1D57C6B200AF50AA /* main.m in Sources */,
 				91A1529E1D57C6B200AF50AA /* CBTSendViewController.m in Sources */,
 				91A152A81D57C7B700AF50AA /* GPNSObjectAdditions.m in Sources */,
-				91A1529C1D57C6B200AF50AA /* CBTTextViewCell.m in Sources */,
+				913B6A511D62762200F1C064 /* CBTMessageTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
