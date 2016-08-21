@@ -2,19 +2,21 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Xcode 7.0">
     <entity name="CBTBuddy" representedClassName="CBTBuddy" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="unorderedMessages" optional="YES" toMany="YES" minCount="1" deletionRule="No Action" destinationEntity="CBTMessage" inverseName="source" inverseEntity="CBTMessage" indexed="YES" syncable="YES"/>
-        <fetchedProperty name="messages" optional="YES" transient="YES" syncable="YES">
-            <fetchRequest name="fetchedPropertyFetchRequest" entity="CBTMessage" predicateString="source == $FETCH_SOURCE"/>
-        </fetchedProperty>
+        <relationship name="conversation" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="CBTConversation" inverseName="buddy" inverseEntity="CBTConversation" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="CBTConversation" representedClassName="CBTConversation" syncable="YES">
+        <relationship name="buddy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CBTBuddy" inverseName="conversation" inverseEntity="CBTBuddy" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CBTMessage" inverseName="conversation" inverseEntity="CBTMessage" syncable="YES"/>
     </entity>
     <entity name="CBTMessage" representedClassName="CBTMessage" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="fromMe" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="timeSinceReferenceDate" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
-        <relationship name="source" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="CBTBuddy" inverseName="unorderedMessages" inverseEntity="CBTBuddy" indexed="YES" syncable="YES"/>
+        <relationship name="conversation" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="CBTConversation" inverseName="messages" inverseEntity="CBTConversation" indexed="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CBTBuddy" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="CBTBuddy" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="CBTMessage" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="CBTConversation" positionX="-63" positionY="27" width="128" height="75"/>
     </elements>
 </model>

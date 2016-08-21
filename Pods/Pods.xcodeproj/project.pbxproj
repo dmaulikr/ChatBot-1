@@ -1,0 +1,731 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10F715672DBFB7ADC485D607289EB5F1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A520A1DCB075A5DBA4902C44B1D62222 /* CoreData.framework */; };
+		138E1C127C1065EC485105B6C9594612 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A1F91FAB899AE1230A58962A27853C /* Foundation.framework */; };
+		1935C77E07F31F9B0F601122E4147120 /* ConvenientFileManager-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CBFB8765713633854DA7152BE8E0A36A /* ConvenientFileManager-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3085BE82902E23BB8D2686737AA40D98 /* NSFetchRequest+FetchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66F21A25B7E662F1C62DCCAD38DC64 /* NSFetchRequest+FetchRequest.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		363C24CBDFF21BB276B067FDB3B066B5 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD205C264230D20A096164FF51139CDA /* ServiceManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		3CAA162756E55C12758F74D3108EDB94 /* CoreDataServices-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F6CB932BBF1A0B68FD103A583DFD2D /* CoreDataServices-dummy.m */; };
+		4CDA5AA8D5119613BAA6F351B04FEA43 /* NSFileManager+Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176C43A4455DB60E4B45BADC478BCF0 /* NSFileManager+Persistence.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		5656C03B6D976F24543DB106F1F9C812 /* NSManagedObjectContext+Delete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49603C4EBD2FB4D8355431D38B8A651E /* NSManagedObjectContext+Delete.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		700E8BB401C208D2BC25AEAE7EDC56A0 /* ConvenientFileManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C0C83154F800CDE617267BC3381221A /* ConvenientFileManager.framework */; };
+		90205D4EE88472EE6E808C8474FE0E3D /* Pods-ChatBot-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 68ADA6FD9392DE89FD0281BFB61B7062 /* Pods-ChatBot-dummy.m */; };
+		91DA52EE6EFBA09A5A19048312A3EFC3 /* NSFileManager+Documents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FA5912433916EACFB6386543F8AABE /* NSFileManager+Documents.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A5B52882634C56C36606739945F4A0B6 /* NSEntityDescription+EntityDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0DBC871B023408DDD45F77593AF40B /* NSEntityDescription+EntityDescription.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A8D0A6D0628622B60120C7231B6D3CAD /* CoreDataServices-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1802B1280EC66538315158EA00F6932C /* CoreDataServices-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B791350F104EC826FC1E2685ABD6D371 /* NSFileManager+Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D77851BFBB91183F52053888DF0A462 /* NSFileManager+Cache.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		BA5E98B28F2A1F2B6095E22376A46E4B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A1F91FAB899AE1230A58962A27853C /* Foundation.framework */; };
+		BBABD405C0A81CE9B5F71B833FFDC3F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91A1F91FAB899AE1230A58962A27853C /* Foundation.framework */; };
+		D89BB45524979775BBA87A4E5DF7A804 /* ConvenientFileManager-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DC5085396852A5AEC9474476236D3D68 /* ConvenientFileManager-dummy.m */; };
+		DFC4CF5814A0B5A6D2D78ADAF69DCCAF /* Pods-ChatBot-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 15C2C0A03DF530FB5DF41983D62647C1 /* Pods-ChatBot-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E6CE5D0A17FC3B7A6AE5173F3CA28BE8 /* NSManagedObjectContext+Retrieval.swift in Sources */ = {isa = PBXBuildFile; fileRef = A585073C1E58DA4A5DC62CC88C8BEEA2 /* NSManagedObjectContext+Retrieval.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F763BFFD09FB08D12E322FBC0B46642F /* NSManagedObjectContext+Count.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA86480B2A5FB30792BD6AD6BF78C99 /* NSManagedObjectContext+Count.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12C73B35613433040D793E47D4CB243F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B76ABEDE3B875B7B44F16404A0D125B1;
+			remoteInfo = ConvenientFileManager;
+		};
+		667EAE4B212C9E6AAE085461589DFE8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FCAE86BDAC52713C74ED3F578D37621;
+			remoteInfo = CoreDataServices;
+		};
+		8CAA9F9A7DD93FD0BEF868C3B7C8725C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B76ABEDE3B875B7B44F16404A0D125B1;
+			remoteInfo = ConvenientFileManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		025C3381AEC787A829E992F7E0AA38BF /* Pods_ChatBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChatBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D0DBC871B023408DDD45F77593AF40B /* NSEntityDescription+EntityDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSEntityDescription+EntityDescription.swift"; path = "CoreDataServices/Services/Core/EntityDescription/NSEntityDescription+EntityDescription.swift"; sourceTree = "<group>"; };
+		15C2C0A03DF530FB5DF41983D62647C1 /* Pods-ChatBot-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ChatBot-umbrella.h"; sourceTree = "<group>"; };
+		1802B1280EC66538315158EA00F6932C /* CoreDataServices-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CoreDataServices-umbrella.h"; sourceTree = "<group>"; };
+		21D514A52A85E523AD5D607A1849DC15 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24D0BEB408F586A80396F636F4A28280 /* ConvenientFileManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConvenientFileManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3366AC1552A846D95FEDBBCB65E48AEE /* CoreDataServices-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CoreDataServices-prefix.pch"; sourceTree = "<group>"; };
+		49603C4EBD2FB4D8355431D38B8A651E /* NSManagedObjectContext+Delete.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+Delete.swift"; path = "CoreDataServices/Services/Deletion/NSManagedObjectContext+Delete.swift"; sourceTree = "<group>"; };
+		5176C43A4455DB60E4B45BADC478BCF0 /* NSFileManager+Persistence.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSFileManager+Persistence.swift"; path = "ConvenientFileManager/Persistence/NSFileManager+Persistence.swift"; sourceTree = "<group>"; };
+		58D7B56777862510A8E456EC25974866 /* Pods-ChatBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ChatBot.debug.xcconfig"; sourceTree = "<group>"; };
+		598CC319649F8F6E32CBCB667839137C /* Pods-ChatBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ChatBot.release.xcconfig"; sourceTree = "<group>"; };
+		59F6CB932BBF1A0B68FD103A583DFD2D /* CoreDataServices-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CoreDataServices-dummy.m"; sourceTree = "<group>"; };
+		639DFBB21D49A7DFDEEB6BD0B90EDA4B /* Pods-ChatBot-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ChatBot-frameworks.sh"; sourceTree = "<group>"; };
+		63EBAE2252CF5083B0088AA04391DF87 /* Pods-ChatBot-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ChatBot-acknowledgements.plist"; sourceTree = "<group>"; };
+		68ADA6FD9392DE89FD0281BFB61B7062 /* Pods-ChatBot-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ChatBot-dummy.m"; sourceTree = "<group>"; };
+		6C0C83154F800CDE617267BC3381221A /* ConvenientFileManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ConvenientFileManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E470B7BC1C22A951B3691E08A98CFAC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81FA5912433916EACFB6386543F8AABE /* NSFileManager+Documents.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSFileManager+Documents.swift"; path = "ConvenientFileManager/Documents/NSFileManager+Documents.swift"; sourceTree = "<group>"; };
+		86DA2EA236FDF507C56491A71F0930BC /* CoreDataServices.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CoreDataServices.modulemap; sourceTree = "<group>"; };
+		884027728779981C069CED1D4CDB7446 /* CoreDataServices.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CoreDataServices.xcconfig; sourceTree = "<group>"; };
+		8B66F21A25B7E662F1C62DCCAD38DC64 /* NSFetchRequest+FetchRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSFetchRequest+FetchRequest.swift"; path = "CoreDataServices/Services/Core/FetchRequest/NSFetchRequest+FetchRequest.swift"; sourceTree = "<group>"; };
+		8D77851BFBB91183F52053888DF0A462 /* NSFileManager+Cache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSFileManager+Cache.swift"; path = "ConvenientFileManager/Cache/NSFileManager+Cache.swift"; sourceTree = "<group>"; };
+		91A1F91FAB899AE1230A58962A27853C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A520A1DCB075A5DBA4902C44B1D62222 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		A585073C1E58DA4A5DC62CC88C8BEEA2 /* NSManagedObjectContext+Retrieval.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+Retrieval.swift"; path = "CoreDataServices/Services/Retrieval/NSManagedObjectContext+Retrieval.swift"; sourceTree = "<group>"; };
+		B9B5CF52C902F1A5B7B9C28ED6CDFE32 /* CoreDataServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBA86480B2A5FB30792BD6AD6BF78C99 /* NSManagedObjectContext+Count.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSManagedObjectContext+Count.swift"; path = "CoreDataServices/Services/Count/NSManagedObjectContext+Count.swift"; sourceTree = "<group>"; };
+		BD205C264230D20A096164FF51139CDA /* ServiceManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServiceManager.swift; path = CoreDataServices/Manager/ServiceManager.swift; sourceTree = "<group>"; };
+		BEF8AA7A17202FCDC7BAC7370DF0B99D /* Pods-ChatBot.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ChatBot.modulemap"; sourceTree = "<group>"; };
+		BF08E88333F93EB1FC90388AAFC3E67B /* ConvenientFileManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ConvenientFileManager-prefix.pch"; sourceTree = "<group>"; };
+		C3D82A13B8E4709CBB1A6E893E1EC98F /* ConvenientFileManager.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ConvenientFileManager.xcconfig; sourceTree = "<group>"; };
+		CBE67495DF553D99CDEDEBC274A65F3B /* Pods-ChatBot-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ChatBot-resources.sh"; sourceTree = "<group>"; };
+		CBFB8765713633854DA7152BE8E0A36A /* ConvenientFileManager-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ConvenientFileManager-umbrella.h"; sourceTree = "<group>"; };
+		DC5085396852A5AEC9474476236D3D68 /* ConvenientFileManager-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ConvenientFileManager-dummy.m"; sourceTree = "<group>"; };
+		ED88E78A8C5F6CFEAC1C2C342EC62D47 /* ConvenientFileManager.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ConvenientFileManager.modulemap; sourceTree = "<group>"; };
+		FAF1853D64CCB4B52C4C6C2BBF213939 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB2B564696598D76B0543721CAF979F2 /* Pods-ChatBot-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ChatBot-acknowledgements.markdown"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07D53BC515C6F85DC9C56E0105419651 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBABD405C0A81CE9B5F71B833FFDC3F6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2AE76197384514AC17F382E1A2FDA1B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				138E1C127C1065EC485105B6C9594612 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF9AB73A6F5AC6D3E944E88E59A1FDD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				700E8BB401C208D2BC25AEAE7EDC56A0 /* ConvenientFileManager.framework in Frameworks */,
+				10F715672DBFB7ADC485D607289EB5F1 /* CoreData.framework in Frameworks */,
+				BA5E98B28F2A1F2B6095E22376A46E4B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		23254AA1BB6DE37096A2A59C1024B66B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6C0C83154F800CDE617267BC3381221A /* ConvenientFileManager.framework */,
+				B2440310143BEBB9827E75C805A95CD7 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27DB5A7B03792092E8B043CE4AF3ED06 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				ED88E78A8C5F6CFEAC1C2C342EC62D47 /* ConvenientFileManager.modulemap */,
+				C3D82A13B8E4709CBB1A6E893E1EC98F /* ConvenientFileManager.xcconfig */,
+				DC5085396852A5AEC9474476236D3D68 /* ConvenientFileManager-dummy.m */,
+				BF08E88333F93EB1FC90388AAFC3E67B /* ConvenientFileManager-prefix.pch */,
+				CBFB8765713633854DA7152BE8E0A36A /* ConvenientFileManager-umbrella.h */,
+				7E470B7BC1C22A951B3691E08A98CFAC /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ConvenientFileManager";
+			sourceTree = "<group>";
+		};
+		2FC65438D69CC836CB970C4F9AE180F3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24D0BEB408F586A80396F636F4A28280 /* ConvenientFileManager.framework */,
+				B9B5CF52C902F1A5B7B9C28ED6CDFE32 /* CoreDataServices.framework */,
+				025C3381AEC787A829E992F7E0AA38BF /* Pods_ChatBot.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		444A5E1F81CB70BDAC67EA23500DA0EF /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				86DA2EA236FDF507C56491A71F0930BC /* CoreDataServices.modulemap */,
+				884027728779981C069CED1D4CDB7446 /* CoreDataServices.xcconfig */,
+				59F6CB932BBF1A0B68FD103A583DFD2D /* CoreDataServices-dummy.m */,
+				3366AC1552A846D95FEDBBCB65E48AEE /* CoreDataServices-prefix.pch */,
+				1802B1280EC66538315158EA00F6932C /* CoreDataServices-umbrella.h */,
+				FAF1853D64CCB4B52C4C6C2BBF213939 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/CoreDataServices";
+			sourceTree = "<group>";
+		};
+		4D8C07C707D25E820EB9DE922EC9AC71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E42D51FE25F7E791D7ED76BB6D64372E /* ConvenientFileManager */,
+				E6BA43CB8D55018F06959295AF688D7C /* CoreDataServices */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7794DED4374096E4186D9043820D8ABE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD3C0723D8E52C8D8759BA0FFDFDB0E4 /* Pods-ChatBot */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				23254AA1BB6DE37096A2A59C1024B66B /* Frameworks */,
+				4D8C07C707D25E820EB9DE922EC9AC71 /* Pods */,
+				2FC65438D69CC836CB970C4F9AE180F3 /* Products */,
+				7794DED4374096E4186D9043820D8ABE /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		B2440310143BEBB9827E75C805A95CD7 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A520A1DCB075A5DBA4902C44B1D62222 /* CoreData.framework */,
+				91A1F91FAB899AE1230A58962A27853C /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CD3C0723D8E52C8D8759BA0FFDFDB0E4 /* Pods-ChatBot */ = {
+			isa = PBXGroup;
+			children = (
+				21D514A52A85E523AD5D607A1849DC15 /* Info.plist */,
+				BEF8AA7A17202FCDC7BAC7370DF0B99D /* Pods-ChatBot.modulemap */,
+				FB2B564696598D76B0543721CAF979F2 /* Pods-ChatBot-acknowledgements.markdown */,
+				63EBAE2252CF5083B0088AA04391DF87 /* Pods-ChatBot-acknowledgements.plist */,
+				68ADA6FD9392DE89FD0281BFB61B7062 /* Pods-ChatBot-dummy.m */,
+				639DFBB21D49A7DFDEEB6BD0B90EDA4B /* Pods-ChatBot-frameworks.sh */,
+				CBE67495DF553D99CDEDEBC274A65F3B /* Pods-ChatBot-resources.sh */,
+				15C2C0A03DF530FB5DF41983D62647C1 /* Pods-ChatBot-umbrella.h */,
+				58D7B56777862510A8E456EC25974866 /* Pods-ChatBot.debug.xcconfig */,
+				598CC319649F8F6E32CBCB667839137C /* Pods-ChatBot.release.xcconfig */,
+			);
+			name = "Pods-ChatBot";
+			path = "Target Support Files/Pods-ChatBot";
+			sourceTree = "<group>";
+		};
+		E42D51FE25F7E791D7ED76BB6D64372E /* ConvenientFileManager */ = {
+			isa = PBXGroup;
+			children = (
+				8D77851BFBB91183F52053888DF0A462 /* NSFileManager+Cache.swift */,
+				81FA5912433916EACFB6386543F8AABE /* NSFileManager+Documents.swift */,
+				5176C43A4455DB60E4B45BADC478BCF0 /* NSFileManager+Persistence.swift */,
+				27DB5A7B03792092E8B043CE4AF3ED06 /* Support Files */,
+			);
+			path = ConvenientFileManager;
+			sourceTree = "<group>";
+		};
+		E6BA43CB8D55018F06959295AF688D7C /* CoreDataServices */ = {
+			isa = PBXGroup;
+			children = (
+				0D0DBC871B023408DDD45F77593AF40B /* NSEntityDescription+EntityDescription.swift */,
+				8B66F21A25B7E662F1C62DCCAD38DC64 /* NSFetchRequest+FetchRequest.swift */,
+				BBA86480B2A5FB30792BD6AD6BF78C99 /* NSManagedObjectContext+Count.swift */,
+				49603C4EBD2FB4D8355431D38B8A651E /* NSManagedObjectContext+Delete.swift */,
+				A585073C1E58DA4A5DC62CC88C8BEEA2 /* NSManagedObjectContext+Retrieval.swift */,
+				BD205C264230D20A096164FF51139CDA /* ServiceManager.swift */,
+				444A5E1F81CB70BDAC67EA23500DA0EF /* Support Files */,
+			);
+			path = CoreDataServices;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		55E7D5E436793E9A43C4526F335055CC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8D0A6D0628622B60120C7231B6D3CAD /* CoreDataServices-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		72F91E14F98F30DEC16DEB5E69DED97C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1935C77E07F31F9B0F601122E4147120 /* ConvenientFileManager-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8694871FA5577D0FD1C5021323A445A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DFC4CF5814A0B5A6D2D78ADAF69DCCAF /* Pods-ChatBot-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0FCAE86BDAC52713C74ED3F578D37621 /* CoreDataServices */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BE432FFC0A7F5942B5C01E16495F466 /* Build configuration list for PBXNativeTarget "CoreDataServices" */;
+			buildPhases = (
+				9E02EFB55A90940C4B1787F545D9B0F5 /* Sources */,
+				FF9AB73A6F5AC6D3E944E88E59A1FDD7 /* Frameworks */,
+				55E7D5E436793E9A43C4526F335055CC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD1C0554477E0F34626061B73BE8B272 /* PBXTargetDependency */,
+			);
+			name = CoreDataServices;
+			productName = CoreDataServices;
+			productReference = B9B5CF52C902F1A5B7B9C28ED6CDFE32 /* CoreDataServices.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B76ABEDE3B875B7B44F16404A0D125B1 /* ConvenientFileManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 495592096302B7AE1882474B3A6F6156 /* Build configuration list for PBXNativeTarget "ConvenientFileManager" */;
+			buildPhases = (
+				09E0477CCFEEE9F63868BDCC870BC70B /* Sources */,
+				07D53BC515C6F85DC9C56E0105419651 /* Frameworks */,
+				72F91E14F98F30DEC16DEB5E69DED97C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ConvenientFileManager;
+			productName = ConvenientFileManager;
+			productReference = 24D0BEB408F586A80396F636F4A28280 /* ConvenientFileManager.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E1CB390DB99EFBCA3928FBCB76A02F61 /* Pods-ChatBot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F66E88A800EFA9CAD7B4E4604FFD02F4 /* Build configuration list for PBXNativeTarget "Pods-ChatBot" */;
+			buildPhases = (
+				2C2364C161EBACD845D0B52559F7259F /* Sources */,
+				F2AE76197384514AC17F382E1A2FDA1B /* Frameworks */,
+				D8694871FA5577D0FD1C5021323A445A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6DD88BBA72CA05DDD8DC799F4881D6B /* PBXTargetDependency */,
+				D7E8DD7C012DDD1208607115219A6277 /* PBXTargetDependency */,
+			);
+			name = "Pods-ChatBot";
+			productName = "Pods-ChatBot";
+			productReference = 025C3381AEC787A829E992F7E0AA38BF /* Pods_ChatBot.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 2FC65438D69CC836CB970C4F9AE180F3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B76ABEDE3B875B7B44F16404A0D125B1 /* ConvenientFileManager */,
+				0FCAE86BDAC52713C74ED3F578D37621 /* CoreDataServices */,
+				E1CB390DB99EFBCA3928FBCB76A02F61 /* Pods-ChatBot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		09E0477CCFEEE9F63868BDCC870BC70B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D89BB45524979775BBA87A4E5DF7A804 /* ConvenientFileManager-dummy.m in Sources */,
+				B791350F104EC826FC1E2685ABD6D371 /* NSFileManager+Cache.swift in Sources */,
+				91DA52EE6EFBA09A5A19048312A3EFC3 /* NSFileManager+Documents.swift in Sources */,
+				4CDA5AA8D5119613BAA6F351B04FEA43 /* NSFileManager+Persistence.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C2364C161EBACD845D0B52559F7259F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90205D4EE88472EE6E808C8474FE0E3D /* Pods-ChatBot-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9E02EFB55A90940C4B1787F545D9B0F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CAA162756E55C12758F74D3108EDB94 /* CoreDataServices-dummy.m in Sources */,
+				A5B52882634C56C36606739945F4A0B6 /* NSEntityDescription+EntityDescription.swift in Sources */,
+				3085BE82902E23BB8D2686737AA40D98 /* NSFetchRequest+FetchRequest.swift in Sources */,
+				F763BFFD09FB08D12E322FBC0B46642F /* NSManagedObjectContext+Count.swift in Sources */,
+				5656C03B6D976F24543DB106F1F9C812 /* NSManagedObjectContext+Delete.swift in Sources */,
+				E6CE5D0A17FC3B7A6AE5173F3CA28BE8 /* NSManagedObjectContext+Retrieval.swift in Sources */,
+				363C24CBDFF21BB276B067FDB3B066B5 /* ServiceManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD1C0554477E0F34626061B73BE8B272 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ConvenientFileManager;
+			target = B76ABEDE3B875B7B44F16404A0D125B1 /* ConvenientFileManager */;
+			targetProxy = 8CAA9F9A7DD93FD0BEF868C3B7C8725C /* PBXContainerItemProxy */;
+		};
+		D6DD88BBA72CA05DDD8DC799F4881D6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ConvenientFileManager;
+			target = B76ABEDE3B875B7B44F16404A0D125B1 /* ConvenientFileManager */;
+			targetProxy = 12C73B35613433040D793E47D4CB243F /* PBXContainerItemProxy */;
+		};
+		D7E8DD7C012DDD1208607115219A6277 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CoreDataServices;
+			target = 0FCAE86BDAC52713C74ED3F578D37621 /* CoreDataServices */;
+			targetProxy = 667EAE4B212C9E6AAE085461589DFE8B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		034014829C1E4434983CF3A690C12017 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		53F1D16F3F3D34BF683571439E175FAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3D82A13B8E4709CBB1A6E893E1EC98F /* ConvenientFileManager.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ConvenientFileManager/ConvenientFileManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ConvenientFileManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ConvenientFileManager/ConvenientFileManager.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ConvenientFileManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		647B5D863241AF99601FBFC04B961F11 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 884027728779981C069CED1D4CDB7446 /* CoreDataServices.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CoreDataServices/CoreDataServices-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CoreDataServices/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CoreDataServices/CoreDataServices.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = CoreDataServices;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7396C4919A5121421E73B93DDBBEFCCB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58D7B56777862510A8E456EC25974866 /* Pods-ChatBot.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-ChatBot/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ChatBot/Pods-ChatBot.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_ChatBot;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A3DFC8BDC262726878D9F109179C1F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3D82A13B8E4709CBB1A6E893E1EC98F /* ConvenientFileManager.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ConvenientFileManager/ConvenientFileManager-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ConvenientFileManager/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ConvenientFileManager/ConvenientFileManager.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ConvenientFileManager;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B8FCD0232959E9A7BC625A8C25BB0410 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 884027728779981C069CED1D4CDB7446 /* CoreDataServices.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CoreDataServices/CoreDataServices-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CoreDataServices/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/CoreDataServices/CoreDataServices.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = CoreDataServices;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C7E474A03CAE21F1CB6046E7344C59BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F76E2A7E9C981F66F7AD9545CC45AD86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 598CC319649F8F6E32CBCB667839137C /* Pods-ChatBot.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-ChatBot/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ChatBot/Pods-ChatBot.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_ChatBot;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				034014829C1E4434983CF3A690C12017 /* Debug */,
+				C7E474A03CAE21F1CB6046E7344C59BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		495592096302B7AE1882474B3A6F6156 /* Build configuration list for PBXNativeTarget "ConvenientFileManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53F1D16F3F3D34BF683571439E175FAE /* Debug */,
+				A3DFC8BDC262726878D9F109179C1F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BE432FFC0A7F5942B5C01E16495F466 /* Build configuration list for PBXNativeTarget "CoreDataServices" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8FCD0232959E9A7BC625A8C25BB0410 /* Debug */,
+				647B5D863241AF99601FBFC04B961F11 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F66E88A800EFA9CAD7B4E4604FFD02F4 /* Build configuration list for PBXNativeTarget "Pods-ChatBot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7396C4919A5121421E73B93DDBBEFCCB /* Debug */,
+				F76E2A7E9C981F66F7AD9545CC45AD86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

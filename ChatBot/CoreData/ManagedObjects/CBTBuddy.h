@@ -9,14 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class CBTMessage;
+@class CBTConversation;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CBTBuddy : NSManagedObject
-
-@property (weak, nonatomic,readonly) CBTMessage *lastMessage;
-@property (nonatomic, strong) NSArray *messages;
 
 @end
 

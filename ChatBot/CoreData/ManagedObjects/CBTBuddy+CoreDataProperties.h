@@ -1,8 +1,8 @@
 //
 //  CBTBuddy+CoreDataProperties.h
-//  TestTask
+//  ChatBot
 //
-//  Created by William Boles on 07/08/2016.
+//  Created by William Boles on 21/08/2016.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,16 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CBTBuddy (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *name;
-@property (nullable, nonatomic, retain) NSSet<CBTMessage *> *unorderedMessages;
-
-@end
-
-@interface CBTBuddy (CoreDataGeneratedAccessors)
-
-- (void)addUnorderedMessagesObject:(CBTMessage *)value;
-- (void)removeUnorderedMessagesObject:(CBTMessage *)value;
-- (void)addUnorderedMessages:(NSSet<CBTMessage *> *)values;
-- (void)removeUnorderedMessages:(NSSet<CBTMessage *> *)values;
+@property (nullable, nonatomic, retain) CBTConversation *conversation;
 
 @end
 

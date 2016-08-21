@@ -1,0 +1,6 @@
+framework module ConvenientFileManager {
+  umbrella header "ConvenientFileManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

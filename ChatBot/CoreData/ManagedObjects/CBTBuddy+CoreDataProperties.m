@@ -1,8 +1,8 @@
 //
 //  CBTBuddy+CoreDataProperties.m
-//  TestTask
+//  ChatBot
 //
-//  Created by William Boles on 07/08/2016.
+//  Created by William Boles on 21/08/2016.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,6 +14,6 @@
 @implementation CBTBuddy (CoreDataProperties)
 
 @dynamic name;
-@dynamic unorderedMessages;
+@dynamic conversation;
 
 @end

@@ -1,8 +1,8 @@
 //
 //  CBTMessage+CoreDataProperties.h
-//  TestTask
+//  ChatBot
 //
-//  Created by William Boles on 07/08/2016.
+//  Created by William Boles on 21/08/2016.
 //
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -10,6 +10,7 @@
 //
 
 #import "CBTMessage.h"
+#import "CBTConversation.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,8 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable, nonatomic, retain) NSNumber *fromMe;
 @property (nullable, nonatomic, retain) NSString *text;
-@property (nullable, nonatomic, retain) NSNumber *timeSinceReferenceDate;
-@property (nullable, nonatomic, retain) CBTBuddy *source;
+@property (nullable, nonatomic, retain) NSDate *date;
+@property (nullable, nonatomic, retain) CBTConversation *conversation;
 
 @end
 
